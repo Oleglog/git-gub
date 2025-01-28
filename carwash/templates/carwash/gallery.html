@@ -1,0 +1,42 @@
+{% extends 'carwash/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="gallery py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Галерея</h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="{% static 'img/gallery1.jpg' %}" class="img-fluid rounded" alt="Фото 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{% static 'img/gallery2.jpg' %}" class="img-fluid rounded" alt="Фото 2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="{% static 'img/gallery3.jpg' %}" class="img-fluid rounded" alt="Фото 3">
+                </div>
+            </div>
+            <!-- Добавляем пагинацию и кнопки навигации -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>  
+    </div>
+</section>
+
+<!-- Инициализация Swiper -->
+<script>
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+{% endblock %}

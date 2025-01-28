@@ -1,0 +1,102 @@
+{% extends 'carwash/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- 1. Герой-баннер с кнопкой записи -->
+<section class="hero-banner py-5 text-center text-white">
+    <div class="container">
+        <h1 class="display-4 mb-4">Профессиональная мойка автомобилей</h1>
+        <p class="lead mb-4">Вернем вашему авто безупречный вид за 20 минут!</p>
+        <a href="#booking" class="btn btn-primary btn-lg">Записаться онлайн</a>
+    </div>
+</section>
+
+<!-- 2. Преимущества (3 колонки) -->
+<section class="advantages py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Почему выбирают нас?</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body text-center">
+                        <div class="fs-1 mb-3">🚗</div>
+                        <h3>Быстро</h3>
+                        <p>Среднее время мойки — 15-20 минут</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body text-center">
+                        <div class="fs-1 mb-3">💎</div>
+                        <h3>Качественно</h3>
+                        <p>Используем профессиональную химию</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body text-center">
+                        <div class="fs-1 mb-3">🛡️</div>
+                        <h3>Безопасно</h3>
+                        <p>Бережная мойка без царапин</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. Услуги и цены -->
+<section class="services py-5" id="services">
+    <div class="container">
+        <h2 class="text-center mb-5">Наши услуги</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">Экспресс-мойка</h4>
+                        <p class="card-text">Быстрая наружная мойка, сушка</p>
+                        <div class="h4 text-primary">500 ₽</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">Полный комплекс</h4>
+                        <p class="card-text">Мойка + уборка салона + полировка</p>
+                        <div class="h4 text-primary">1500 ₽</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. Форма записи -->
+<section class="booking py-5 bg-light" id="booking">
+    <div class="container">
+        <h2 class="text-center mb-5">Онлайн-запись</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="bg-white p-4 rounded shadow">
+                    <div class="mb-3">
+                        <label class="form-label">Ваше имя</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Телефон</label>
+                        <input type="tel" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Дата и время</label>
+                        <input type="datetime-local" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Записаться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
