@@ -1,0 +1,310 @@
+{% extends 'carwash/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Добавьте этот CSS в начало файла или в отдельный CSS файл -->
+
+<!-- 1. Герой-баннер с кнопкой записи -->
+<section class="hero-banner py-5 text-center text-white">
+    <div class="container">
+        <h1 class="display-4 mb-4">Профессиональная мойка автомобилей</h1>
+        <p class="lead mb-4">Вернем вашему авто безупречный вид за 20 минут!</p>
+        <a href="#booking" class="btn btn-primary btn-lg">Записаться онлайн</a>
+        <link rel="stylesheet" href="css/styles.css">
+    </div>
+</section>
+
+<!-- 2. Преимущества (3 колонки) -->
+<section class="advantages py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Почему выбирают нас?</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body text-center">
+                        <div class="fs-1 mb-3">🚗</div>
+                        <h3>Быстро</h3>
+                        <p>Среднее время мойки — 15-20 минут</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body text-center">
+                        <div class="fs-1 mb-3">💎</div>
+                        <h3>Качественно</h3>
+                        <p>Используем профессиональную химию</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-body text-center">
+                        <div class="fs-1 mb-3">🛡️</div>
+                        <h3>Безопасно</h3>
+                        <p>Бережная мойка без царапин</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Удаляем старую секцию услуг и заменяем на эту -->
+
+<section class="process-steps py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="display-4 mb-4">Наш процесс мойки</h2>
+                <p class="lead text-muted">4 этапа идеальной чистоты вашего автомобиля</p>
+            </div>
+        </div>
+
+        <div class="row g-4 position-relative">
+            <!-- Линия прогресса -->
+            <div class="progress-line"></div>
+
+            <!-- Шаги процесса -->
+            <div class="col-md-3">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Предварительная обработка</h3>
+                    <ul class="step-list">
+                        <li>Удаление грубых загрязнений</li>
+                        <li>Нанесение активной пены</li>
+                        <li>Очистка колесных арок</li>
+                    </ul>
+                    <div class="step-duration">~10 минут</div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Основная мойка</h3>
+                    <ul class="step-list">
+                        <li>Бесконтактная мойка кузова</li>
+                        <li>Очистка скрытых полостей</li>
+                        <li>Использование мягких щеток</li>
+                    </ul>
+                    <div class="step-duration">~15 минут</div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Детализация</h3>
+                    <ul class="step-list">
+                        <li>Ручная сушка микрофиброй</li>
+                        <li>Обработка резиновых уплотнителей</li>
+                        <li>Полировка фар</li>
+                    </ul>
+                    <div class="step-duration">~20 минут</div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Финишный контроль</h3>
+                    <ul class="step-list">
+                        <li>Осмотр качества</li>
+                        <li>Ароматизация салона</li>
+                        <li>Защитное покрытие</li>
+                    </ul>
+                    <div class="step-duration">~10 минут</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.step-card').forEach(card => {
+        card.style.animationPlayState = 'paused';
+        observer.observe(card);
+    });
+});
+</script>
+
+<!-- 4. Форма записи -->
+<section class="booking py-5" id="booking">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5">
+                        <h2 class="text-center mb-4">🚗 Онлайн-запись</h2>
+                        <form method="post">
+                            {% csrf_token %}
+                            
+                            <!-- Скрытое поле для места -->
+                            <input type="hidden" name="spot" id="spotInput">
+                            
+                            <!-- Поле имени -->
+                            <div class="mb-4">
+                                <label class="form-label fs-5 text-secondary">Ваше имя</label>
+                                {{ form.name }}
+                            </div>
+                            
+                            <!-- Поле телефона -->
+                            <div class="mb-4">
+                                <label class="form-label fs-5 text-secondary">Телефон</label>
+                                {{ form.phone }}
+                            </div>
+                            
+                            <!-- Выбор услуги -->
+                            <div class="mb-4">
+                                <label class="form-label fs-5 text-secondary">Услуга</label>
+                                {{ form.service }}
+                            </div>
+                            
+                            <!-- Выбор даты -->
+                            <div class="mb-4">
+                                <label class="form-label fs-5 text-secondary">Дата</label>
+                                {{ form.date }}
+                            </div>
+                            
+                            <!-- Выбор времени -->
+                            <div class="mb-4">
+                                <label class="form-label fs-5 text-secondary">Время</label>
+                                {{ form.time }}
+                                <div class="time-select-container" id="timeContainer"></div>
+                            </div>
+                            
+                            <!-- Выберите место -->
+                            <div class="mb-4">
+                                <label class="form-label fs-5 text-secondary">Выберите место</label>
+                                <div id="spotsContainer" class="spots-container">
+                                    <!-- Места будут добавлены динамически -->
+                                </div>
+                            </div>
+                            
+                            <!-- Кнопка отправки -->
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg py-3">
+                                    <i class="bi bi-calendar-check me-2"></i>Записаться
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const serviceSelect = document.querySelector('[name="service"]');
+    const dateInput = document.querySelector('[name="date"]');
+    const spotInput = document.querySelector('[name="spot"]');
+    const spotsContainer = document.getElementById('spotsContainer');
+    const timeSelect = document.querySelector('[name="time"]');
+    const timeContainer = document.getElementById('timeContainer');
+
+    function loadSpots() {
+        const service = serviceSelect.value;
+        const date = dateInput.value;
+        const time = timeSelect.value;
+
+        if (!service || !date || !time) {
+            spotsContainer.innerHTML = 'Выберите услугу, дату и время';
+            return;
+        }
+
+        const dateTime = `${date}T${time}`;
+        spotsContainer.innerHTML = 'Загрузка мест...';
+
+        fetch(`/get-spots/?service=${service}&date=${encodeURIComponent(dateTime)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                spotsContainer.innerHTML = '';
+                if (data.spots && data.spots.length > 0) {
+                    data.spots.forEach(spot => {
+                        const spotBox = document.createElement('div');
+                        spotBox.className = `spot-box ${spot.is_available ? 'available' : 'unavailable'}`;
+                        spotBox.textContent = spot.number;
+                        
+                        // Добавляем подсказку, кем занято место
+                        if (spot.booked_by) {
+                            spotBox.title = `Занято: ${spot.booked_by}`;
+                        }
+                        
+                        if (spot.is_available) {
+                            spotBox.addEventListener('click', () => {
+                                document.querySelectorAll('.spot-box').forEach(box => {
+                                    box.classList.remove('selected');
+                                });
+                                spotBox.classList.add('selected');
+                                spotInput.value = spot.id;
+                            });
+                        }
+                        
+                        spotsContainer.appendChild(spotBox);
+                    });
+                } else {
+                    spotsContainer.innerHTML = 'Нет доступных мест';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                spotsContainer.innerHTML = `Ошибка загрузки мест: ${error.message}`;
+            });
+    }
+
+    // Создаем кнопки для каждого времени
+    timeSelect.querySelectorAll('option').forEach(option => {
+        if (option.value) {  // Пропускаем пустой option если есть
+            const timeBtn = document.createElement('div');
+            timeBtn.className = 'time-option';
+            timeBtn.textContent = option.textContent;
+            timeBtn.dataset.value = option.value;
+            
+            timeBtn.addEventListener('click', () => {
+                // Убираем выделение со всех кнопок
+                document.querySelectorAll('.time-option').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                
+                // Выделяем выбранную кнопку
+                timeBtn.classList.add('selected');
+                
+                // Обновляем значение в скрытом select
+                timeSelect.value = timeBtn.dataset.value;
+                
+                // Вызываем загрузку мест
+                loadSpots();
+            });
+            
+            timeContainer.appendChild(timeBtn);
+        }
+    });
+
+    // Загружаем места при изменении услуги или даты
+    serviceSelect.addEventListener('change', loadSpots);
+    dateInput.addEventListener('change', loadSpots);
+    timeSelect.addEventListener('change', loadSpots);
+});
+</script>
+{% endblock %}

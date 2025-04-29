@@ -1,0 +1,57 @@
+{% extends 'carwash/base.html' %}
+
+{% block content %}
+<section class="services py-5">
+    <div class="container">
+        <!-- Заголовок с подсветкой -->
+        <div class="row mb-5">
+            <div class="col-12 text-center position-relative">
+                <div class="bg-primary opacity-10 position-absolute top-0 start-0 w-100 h-100 rounded"></div>
+                <h2 class="display-4 py-4 position-relative">Наши услуги</h2>
+                <p class="lead text-muted">Профессиональный уход за вашим автомобилем</p>
+            </div>
+
+        </div>
+
+        <!-- Услуги -->
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-md-4">
+                <div class="service-card card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body p-4">
+                        <div class="service-icon text-center mb-4">
+                            <div class="icon-circle bg-primary bg-opacity-10 mx-auto">
+                                <span class="display-5 text-primary">{{ service.icon }}</span>
+                            </div>
+                        </div>
+                        <h3 class="card-title text-center mb-3">{{ service.name }}</h3>
+                        <p class="card-text text-muted text-center">{{ service.description }}</p>
+                        <div class="text-center mt-4">
+                            <a href="{% url 'home' %}" class="btn btn-outline-primary rounded-pill">
+                                Записаться
+                                <i class="bi bi-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Дополнительная информация -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card border-0 bg-primary bg-opacity-10 shadow-sm">
+                    <div class="card-body p-4 text-center">
+                        <h4 class="mb-3">Хотите узнать больше о наших услугах?</h4>
+                        <p class="mb-4">Свяжитесь с нами, и мы ответим на все ваши вопросы</p>
+                        <a href="{% url 'contacts' %}" class="btn btn-primary rounded-pill px-4">
+                            Связаться с нами
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

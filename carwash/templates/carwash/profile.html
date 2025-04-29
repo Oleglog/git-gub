@@ -1,0 +1,77 @@
+{% extends 'carwash/base.html' %}
+
+{% block content %}
+<section class="container py-5">
+    <div class="row">
+        <!-- Форма профиля -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4">Профиль {{ user.username }}</h2>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary w-100">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- История заказов -->
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h2 class="mb-4">История заказов</h2>
+                    {% if orders %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>№ заказа</th>
+                                        <th>Услуга</th>
+                                        <th>Дата и время</th>
+                                        <th>Сумма</th>
+                                        <th>Статус</th>
+                                        {% if orders|dictsortreversed:"status" %}
+                                        <th></th>
+                                        {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders %}
+                                    <tr>
+                                        <td>#{{ order.id }}</td>
+                                        <td>{{ order.booking.spot.get_service_display }}</td>
+                                        <td>{{ order.booking.date|date:"d.m.Y H:i" }}</td>
+                                        <td>{{ order.amount }} ₽</td>
+                                        <td>
+                                            {% if order.status == 'paid' %}
+                                                <span class="badge bg-success">Оплачен</span>
+                                            {% elif order.status == 'pending' %}
+                                                <span class="badge bg-warning">Ожидает оплаты</span>
+                                            {% else %}
+                                                <span class="badge bg-danger">Отменен</span>
+                                            {% endif %}
+                                        </td>
+                                        {% if order.status == 'pending' %}
+                                        <td>
+                                            <a href="{% url 'payment' booking_id=order.booking.id %}" 
+                                               class="btn btn-primary btn-sm">
+                                                Оплатить
+                                            </a>
+                                        </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-center text-muted">У вас пока нет заказов</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

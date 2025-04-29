@@ -1,0 +1,21 @@
+{% extends 'carwash/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="auth-container">
+    <h2 class="auth-title">Регистрация</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-row">
+            {{ field.label_tag }}
+            {{ field }}
+        </div>
+        {% endfor %}
+        <button type="submit" class="auth-submit-btn">Создать аккаунт</button>
+        <div class="auth-switch">
+            Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
