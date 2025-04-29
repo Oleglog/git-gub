@@ -1,0 +1,540 @@
+/* Кастомные стили */
+.hero-banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('../img/banner.jpg') center/cover;
+    padding: 120px 0 !important;
+}
+
+.card {
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.advantages .card {
+    border: none;
+}
+
+.booking form {
+    position: relative;
+    top: -50px;
+    margin-bottom: -50px;
+}
+
+/* Кастомные стили для navbar */
+.navbar {
+    padding: 0.8rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffc107 !important;
+}
+
+/* Фикс для фиксированного navbar */
+body {
+    padding-top: 30px; /* Высота navbar */
+}
+
+/* Стили для иконок в подвале */
+.bi {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    transition: color 0.3s;
+}
+
+.bi:hover {
+    color: #ffc107 !important;
+}
+
+/* Стили для логотипа и текста */
+.navbar-brand {
+    display: flex;
+    align-items: center;  /* Выравниваем по вертикали */
+}
+
+.navbar-brand img {
+    margin-right: 10px;  /* Отступ между логотипом и текстом */
+    height: auto;        /* Сохраняем пропорции */
+}
+
+.navbar-brand span {
+    font-size: 1.25rem;  /* Размер текста */
+    font-weight: 500;    /* Жирность текста */
+    color: #fff;         /* Цвет текста */
+}
+
+/* Плавная прокрутка к якорям */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Стили для формы */
+.booking .card {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.booking input,
+.booking select {
+    border: 2px solid #e9ecef;
+    border-radius: 12px !important;
+    padding: 1rem 1.5rem !important;
+    font-size: 1.1rem !important;
+    transition: all 0.3s ease;
+}
+
+.booking input:focus,
+.booking select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.25);
+}
+
+.booking .btn-lg {
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s;
+}
+
+.booking .btn-lg:hover {
+    transform: translateY(-2px);
+}
+
+/* Иконка в кнопке */
+.bi-calendar-check {
+    font-size: 1.2em;
+}
+
+
+
+.spots-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap; /* Убираем перенос на новую строку */
+    margin: 20px 0;
+    justify-content: space-between;
+    width: 100%;
+    overflow-x: auto; /* Добавляем горизонтальную прокрутку если не помещается */
+    padding: 10px 0; /* Добавляем отступ для скролла */
+}
+
+.spot-box {
+    flex: 0 0 60px; /* Фиксированная ширина места */
+    height: 60px; /* Фиксированная высота */
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    flex-shrink: 0; /* Запрещаем сжиматься */
+}
+
+.spot-box.available {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.spot-box.unavailable {
+    background-color: #f44336;
+    color: white;
+    cursor: not-allowed;
+}
+
+.spot-box.selected {
+    border: 3px solid #2196F3;
+    box-shadow: 0 0 15px rgba(33, 150, 243, 0.5);
+    transform: scale(1.05);
+}
+
+/* Стилизуем скроллбар для лучшего вида */
+.spots-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.spots-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.spots-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.spots-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.time-select-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.time-option {
+    padding: 10px 20px;
+    background-color: #e3f2fd;
+    border: 2px solid #90caf9;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #1976d2;
+}
+
+.time-option:hover {
+    background-color: #90caf9;
+    color: white;
+}
+
+.time-option.selected {
+    background-color: #1976d2;
+    color: white;
+    border-color: #1976d2;
+}
+
+/* Скрываем оригинальный select */
+.time-select {
+    display: none;
+}
+
+
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.hover-card:hover .icon-circle {
+    transform: scale(1.1);
+}
+
+.service-card {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.btn-outline-primary:hover {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+}
+
+.rounded-pill {
+    transition: all 0.3s ease;
+}
+
+.rounded-pill:hover {
+    transform: scale(1.05);
+}
+
+/* Секция процесса мойки */
+.process-steps {
+    position: relative;
+    background: #f8f9fa;
+    padding: 4rem 0;
+}
+
+.step-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+}
+
+.progress-line {
+    position: absolute;
+    height: 4px;
+    background: #0d6efd;
+    width: 80%;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    z-index: 1;
+    border-radius: 2px;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: #0d6efd;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: -40px auto 1.5rem;
+    position: relative;
+}
+
+.step-title {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.step-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.step-list li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.step-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+.step-duration {
+    text-align: center;
+    color: #6c757d;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Анимации для шагов */
+@keyframes cardAppear {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-card {
+    animation: cardAppear 0.6s ease forwards;
+    opacity: 0;
+}
+
+.step-card:nth-child(1) { animation-delay: 0.2s; }
+.step-card:nth-child(2) { animation-delay: 0.4s; }
+.step-card:nth-child(3) { animation-delay: 0.6s; }
+.step-card:nth-child(4) { animation-delay: 0.8s; }
+
+/* Медиа-запросы для мобильных */
+@media (max-width: 992px) {
+    .progress-line {
+        display: none;
+    }
+    
+    .step-card {
+        min-height: auto;
+        margin: 1rem 0;
+        padding: 1.5rem;
+    }
+    
+    .step-number {
+        margin: -30px auto 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+/* contacts.html */
+
+.contact-item {
+        transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .social-links a {
+        transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+        transform: scale(1.2);
+    }
+    
+    .card {
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+    }
+
+    /* Стили для Sviper */
+
+    .swiper-container {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 300px;
+    }
+    .swiper-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px;
+        text-align: center;
+    }
+
+/* Общие стили для анимированных карточек */
+.animated-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease-out;
+    animation: cardAppear 0.6s ease forwards;
+}
+
+.animated-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15)!important;
+}
+
+.icon-main {
+    font-size: 2.5rem;
+    transition: transform 0.3s ease;
+}
+
+.animated-card:hover .icon-main {
+    transform: rotate(15deg) scale(1.2);
+}
+
+/* Задержки анимации */
+.animated-card:nth-child(1) { animation-delay: 0.2s; }
+.animated-card:nth-child(2) { animation-delay: 0.4s; }
+.animated-card:nth-child(3) { animation-delay: 0.6s; }
+
+/* Универсальные стили форм */
+.auth-container {
+    max-width: 480px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+    font-size: 1.8rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #007bff;
+}
+
+.form-row {
+    margin-bottom: 1.5rem;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.form-row input {
+    width: 100%;
+    padding: 0.875rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-row input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.auth-submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.auth-submit-btn:hover {
+    background: #0056b3;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+    color: #718096;
+}
+
+.auth-switch a {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        margin: 1.5rem;
+        padding: 1.5rem;
+    }
+}
